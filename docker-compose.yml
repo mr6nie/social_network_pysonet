@@ -12,12 +12,12 @@ services:
       - ./.env.dev
   pysonet_db:
     image: postgres:12.0-alpine
+    ports:
+        - "5432:5432"
     volumes:
-      - pysonet_postgres_data:/var/lib/postgresql/data/
-    environment:
-      - POSTGRES_USER=pysonet_user
-      - POSTGRES_PASSWORD=pysonet_pass
-      - POSTGRES_DB=pysonet
+        - pysonet_postgres_data:/var/lib/postgresql/data/
+    env_file:
+      - ./.env.dev
 
 volumes:
   pysonet_postgres_data:
