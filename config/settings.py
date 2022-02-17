@@ -31,6 +31,10 @@ DEBUG = env("DEBUG")
 
 ALLOWED_HOSTS = env("ALLOWED_HOSTS").split(" ")
 
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8000",
+]
+
 
 # Application definition
 
@@ -47,11 +51,14 @@ INSTALLED_APPS = [
     "rest_framework",
     "djoser",
     "phonenumber_field",
+    "drf_yasg",
+    "corsheaders",
 ]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -90,16 +97,6 @@ WSGI_APPLICATION = "config.wsgi.application"
 #     }
 # }
 
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.postgresql",
-#         "NAME": "pysonet",
-#         "USER": "postgres",
-#         "PASSWORD": "badboy12345",
-#         "HOST": "localhost",
-#         "PORT": "5432",
-#     }
-# }
 
 DATABASES = {
     "default": {

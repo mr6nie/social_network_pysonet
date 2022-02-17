@@ -1,7 +1,16 @@
 from django.urls import path
 
-from .views import GetUserNetView
+from . import views
 
 urlpatterns = [
-    path("<int:pk>", GetUserNetView.as_view(), name="user_info"),
+    path(
+        "profile/<int:pk>",
+        views.UserNetView.as_view({"get": "retrieve", "put": "update"}),
+        name="user_info",
+    ),
+    path(
+        "<int:pk>",
+        views.UserNetPublicView.as_view({"get": "retrieve"}),
+        name="public_info",
+    ),
 ]
