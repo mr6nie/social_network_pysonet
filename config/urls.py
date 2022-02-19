@@ -12,6 +12,7 @@ urlpatterns = [
     path("auth/", include("djoser.urls.jwt")),
     path("api/v1/users/", include("apps.profiles.urls")),
     path("api/v1/wall/", include("apps.wall.urls")),
+    path("api/v1/follower/", include("apps.followers.urls")),
 ]
 urlpatterns += yasg
 

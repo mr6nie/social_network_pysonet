@@ -1,9 +1,13 @@
+from dataclasses import fields
 from rest_framework import serializers
 
 from .models import UserNet
 
 
 class GetUserNetSerializer(serializers.ModelSerializer):
+
+    avatar = serializers.ImageField(read_only=True)
+
     class Meta:
         model = UserNet
         exclude = (
@@ -30,4 +34,18 @@ class GetUserNetPublicSerializer(serializers.ModelSerializer):
             "user_permissions",
             "email",
             "phone",
+        )
+
+
+class UserByFollowerSerializer(serializers.ModelSerializer):
+    """сериализация для подписчиков"""
+
+    avatar = serializers.ImageField(read_only=True)
+
+    class Meta:
+        model = UserNet
+        fields = (
+            "id",
+            "username",
+            "avatar",
         )
